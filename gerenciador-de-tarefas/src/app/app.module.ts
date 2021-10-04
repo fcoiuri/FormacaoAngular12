@@ -12,7 +12,7 @@ import { TarefasModule } from './tarefas';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TarefasModule
+    TarefasModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
