@@ -5,11 +5,11 @@ div {
 	font-family: 'Press Start 2P', cursive;
 }
 
-div.principal {
+div.main {
 	margin-top: 100px;
 }
 
-a.botao {
+a.button {
 	margin-top: 100px;
 	font-size: 20px;
 	background-color: lightgreen;
@@ -54,6 +54,9 @@ ul li {
 
 .kz-img-o {
 	background-image: url('/assets/images/o.png');
+}
+.kz-img-restart {
+	background-image: url('/assets/images/restart.png');
 }
 
 .kz-victory-color {

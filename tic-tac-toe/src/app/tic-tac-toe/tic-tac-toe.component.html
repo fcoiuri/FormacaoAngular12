@@ -2,15 +2,16 @@
     <h2>Tic-tac-toe</h2>
     
     <!-- Home Screen -->
-    <div class="main">
+    <div class="main" *ngIf="showStart">
       <a href="#" 
-         class="button">
+         class="button"
+         (click)="startGame">
          Start
       </a>
     </div><!-- end of home screen -->
   
     <!-- board -->
-    <div>
+    <div *ngIf="showBoard">
       <ul>
         <li class="kz-border-bottom kz-border-right"></li>
         <li class="kz-border-bottom kz-border-right"></li>
@@ -25,7 +26,7 @@
     </div><!-- end of board --> 
   
     <!-- end screen -->
-    <div>
+    <div *ngIf="showEnd">
       <span>
       <p>YOU WON!!!</p>
       <p>YOU LOST...</p>
@@ -37,6 +38,9 @@
         </a>
       </span>
     </div><!-- end of end screem -->
+    <div class="restart" *ngIf="showBoard">
+        <a href="#" (click)="startGame">Restart</a>
+    </div>
   
   </div>
   
