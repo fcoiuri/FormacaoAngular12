@@ -15,6 +15,10 @@ export class TicTacToeComponent implements OnInit {
     this.ticTacToeService.initialize();
   }
 
+  initialize(): void{
+    this.ticTacToeService.initializeBoard();
+  }
+
   get showStart(): boolean {
     return this.ticTacToeService.showStart;
   }
@@ -31,5 +35,20 @@ export class TicTacToeComponent implements OnInit {
     return this.ticTacToeService.startGame();
   }
 
+  play(posX: number, posY: number): void {
+    this.ticTacToeService.play(posX, posY);
+  }
+
+  showX(posX: number, posY: number): boolean{
+    return this.ticTacToeService.showX(posX, posY);
+  }
+
+  showO(posX: number, posY: number): boolean{
+    return this.ticTacToeService.showO(posX, posY);
+  }
+
+  showVictory(posX: number, posY: number): boolean{
+    return this.ticTacToeService.showVictory(posX, posY);
+  }
 
 }

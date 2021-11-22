@@ -160,7 +160,7 @@ export class TicTacToeService {
     return this.board[posX][posY] === this.X;
   }
   
-  showY(posX: number, posY: number): boolean {
+  showO(posX: number, posY: number): boolean {
     return this.board[posX][posY] === this.O;
   }
 

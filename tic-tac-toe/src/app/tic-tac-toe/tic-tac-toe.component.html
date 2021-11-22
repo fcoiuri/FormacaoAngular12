@@ -13,17 +13,63 @@
     <!-- board -->
     <div *ngIf="showBoard">
       <ul>
-        <li class="kz-border-bottom kz-border-right"></li>
-        <li class="kz-border-bottom kz-border-right"></li>
-        <li class="kz-border-bottom"></li>
-        <li class="kz-border-bottom kz-border-right"></li>
-        <li class="kz-border-bottom kz-border-right"></li>
-        <li class="kz-border-bottom"></li>
-        <li class="kz-border-right"></li>
-        <li class="kz-border-right"></li>
-        <li></li>
+        <li class="kz-border-bottom kz-border-right"
+        [class.kz-img-x]="showX(0,0)"
+        [class.kz-img-o]="showO(0,0)"
+        [class.kz-victory-color]="showVictory(0,0)"
+        (click)="play(0,0)"></li>
+
+        <li class="kz-border-bottom kz-border-right"
+        [class.kz-img-x]="showX(0,1)"
+        [class.kz-img-o]="showO(0,1)"
+        [class.kz-victory-color]="showVictory(0,1)"
+        (click)="play(0,1)"></li>
+
+        <li class="kz-border-bottom"
+        [class.kz-img-x]="showX(0,2)"
+        [class.kz-img-o]="showO(0,2)"
+        [class.kz-victory-color]="showVictory(0,2)"
+        (click)="play(0,2)"></li>
+
+        <li class="kz-border-bottom kz-border-right"
+        [class.kz-img-x]="showX(1,0)"
+        [class.kz-img-o]="showO(1,0)"
+        [class.kz-victory-color]="showVictory(1,0)"
+        (click)="play(1,0)"></li>
+
+        <li class="kz-border-bottom kz-border-right"
+        [class.kz-img-x]="showX(1,1)"
+        [class.kz-img-o]="showO(1,1)"
+        [class.kz-victory-color]="showVictory(1,1)"
+        (click)="play(1,1)"></li>
+
+        <li class="kz-border-bottom"
+        [class.kz-img-x]="showX(1,2)"
+        [class.kz-img-o]="showO(1,2)"
+        [class.kz-victory-color]="showVictory(1,2)"
+        (click)="play(1,2)"></li>
+
+        <li class="kz-border-right"
+        [class.kz-img-x]="showX(2,0)"
+        [class.kz-img-o]="showO(2,0)"
+        [class.kz-victory-color]="showVictory(2,0)"
+        (click)="play(2,0)"></li>
+
+        <li class="kz-border-right"
+        [class.kz-img-x]="showX(2,1)"
+        [class.kz-img-o]="showO(2,1)"
+        [class.kz-victory-color]="showVictory(2,1)"
+        (click)="play(2,1)"></li>
+
+        <li [class.kz-img-x]="showX(2,2)"
+        [class.kz-img-o]="showO(2,2)"
+        [class.kz-victory-color]="showVictory(2,2)"
+        (click)="play(2,2)"></li>
       </ul>
     </div><!-- end of board --> 
+    <!-- <div *ngIf="showBoard">
+        <a href="#" (click)="initialize()">Restart</a>
+    </div> -->
   
     <!-- end screen -->
     <div *ngIf="showEnd">
@@ -38,9 +84,5 @@
         </a>
       </span>
     </div><!-- end of end screem -->
-    <div class="restart" *ngIf="showBoard">
-        <a href="#" (click)="startGame">Restart</a>
-    </div>
-  
   </div>
   

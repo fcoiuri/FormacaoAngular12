@@ -55,9 +55,6 @@ ul li {
 .kz-img-o {
 	background-image: url('/assets/images/o.png');
 }
-.kz-img-restart {
-	background-image: url('/assets/images/restart.png');
-}
 
 .kz-victory-color {
 	 background-color: lightgreen;
