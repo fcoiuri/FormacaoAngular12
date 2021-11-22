@@ -74,12 +74,13 @@
     <!-- end screen -->
     <div *ngIf="showEnd">
       <span>
-      <p>YOU WON!!!</p>
-      <p>YOU LOST...</p>
-      <p>DRAW...</p>
+      <p *ngIf="player===2">YOU WON!!!</p>
+      <p *ngIf="player===1">YOU LOST...</p>
+      <p *ngIf="player===0">DRAW...</p>
       <br />
       <a href="#" 
-           class="botao">
+           class="button"
+           (click)="newGame()">
            Play Again
         </a>
       </span>

@@ -33,7 +33,7 @@ export class TicTacToeService {
 
   initializeBoard(): void {
     this.board = [this.SIZE_BOARD];
-    for (let i = 0;i < this.SIZE_BOARD;i++) {
+    for (let i = 0; i < this.SIZE_BOARD; i++) {
       this.board[i] = [this.EMPTY, this.EMPTY, this.EMPTY];
     }
   }
@@ -59,98 +59,105 @@ export class TicTacToeService {
     this._showBoard = true;
   }
 
-  play(posX: number, posY: number): void{
-    if(this.board[posX][posY] !== this.EMPTY
-      || this.victory){
-        return;
-      }
-      this.board[posX][posY] = this._player;
-      this.numMovements++;
+  play(posX: number, posY: number): void {
+    if (this.board[posX][posY] !== this.EMPTY ||
+      this.victory) {
+      return;
+    }
 
-      this.victory = this.endGame(posX, posY, 
-        this.board, this._player);
-      this._player = (this._player === this.X) ?
-      this.O : this.X;
+    this.board[posX][posY] = this._player;
+    this.numMovements++;
+    this.victory = this.endGame(posX, posY,
+      this.board, this._player);
+    this._player = (this._player === this.X) ? this.O : this.X;
 
-      if(!this.victory && this.numMovements < 9){
-        this.cpuPlay();
-      }
+    if (!this.victory && this.numMovements < 9) {
+      this.cpuPlay();
+    }
 
-      if(this.victory !== false){
-        this._showEnd = true;
-      }
+    if (this.victory !== false) {
+      this._showEnd = true;
+    }
 
-      if(!this.victory && this.numMovements === 9) {
-        this._player = 0;
-        this._showEnd = true;
-      }
+    if (!this.victory && this.numMovements === 9) {
+      this._player = 0;
+      this._showEnd = true;
+    }
   }
 
-  endGame(line: number, column: number, 
-    board: number, player: number) {
-      let end: any = false;
+  endGame(line: number, column: number,
+    board: any, player: number) {
+    let end: any = false;
 
-      if(board[line][0] === player &&
-        board[line][1] === player &&
-        board[line][2] === player){
-          end = [[line, 0], [line, 1], [line, 2]];
-        }
-      if(board[column][0] === player &&
-        board[column][1] === player &&
-        board[column][2] === player){
-          end = [[column, 0], [column, 1], [column, 2]];
-        }
-      if(board[0][0] === player &&
-        board[1][1] === player &&
-        board[2][2] === player){
-          end = [[0, 0], [1, 1], [2, 2]];
-        }
-      if(board[0][2] === player &&
-        board[1][1] === player &&
-        board[2][0] === player){
-          end = [[0, 2], [1, 1], [2, 0]];
-        }
+    // valida a line
+    if (board[line][0] === player &&
+      board[line][1] === player &&
+      board[line][2] === player) {
+      end = [[line, 0], [line, 1], [line, 2]];
+    }
+
+    // valida a column
+    if (board[0][column] === player &&
+      board[1][column] === player &&
+      board[2][column] === player) {
+      end = [[0, column], [1, column], [2, column]];
+    }
+
+    // valida as diagonais
+    if (board[0][0] === player &&
+      board[1][1] === player &&
+      board[2][2] === player) {
+      end = [[0, 0], [1, 1], [2, 2]];
+    }
+
+    if (board[0][2] === player &&
+      board[1][1] === player &&
+      board[2][0] === player) {
+      end = [[0, 2], [1, 1], [2, 0]];
+    }
+
     return end;
   }
 
   cpuPlay(): void {
     let move: number[] = this.getMove(this.O);
 
-    if(move.length <=0 ){
+    if (move.length <= 0) {
       move = this.getMove(this.X);
     }
-    if(move.length <=0 ){
+
+    if (move.length <= 0) {
       let moves: any = [];
-      for(let i = 0; i<this.SIZE_BOARD;i++){
-        for(let j = 0; j<this.SIZE_BOARD;j++){
-          if(this.board[i][j] === this.EMPTY){
+      for (let i = 0; i < this.SIZE_BOARD; i++) {
+        for (let j = 0; j < this.SIZE_BOARD; j++) {
+          if (this.board[i][j] === this.EMPTY) {
             moves.push([i, j]);
           }
         }
       }
-      let k = Math.floor(Math.random() * (moves.length - 1));
+      let k = Math.floor((Math.random() * (moves.length - 1)));
       move = [moves[k][0], moves[k][1]];
     }
+
     this.board[move[0]][move[1]] = this._player;
     this.numMovements++;
     this.victory = this.endGame(move[0], move[1],
-        this.board, this._player);
+      this.board, this._player);
     this._player = (this._player === this.X) ? this.O : this.X;
-    
   }
 
   getMove(player: number): number[] {
-    let boa = this.board;
+    let tab = this.board;
     for (let lin = 0; lin < this.SIZE_BOARD; lin++) {
       for (let col = 0; col < this.SIZE_BOARD; col++) {
-        if (boa[lin][col] !== this.EMPTY) {
+        if (tab[lin][col] !== this.EMPTY) {
           continue;
         }
-        boa[lin][col] = player;
-        if (this.endGame(lin, col, boa, player)) {
+        tab[lin][col] = player;
+        if (this.endGame(lin, col, tab, player)) {
           return [lin, col];
         }
-        boa[lin][col] = this.EMPTY;
+        tab[lin][col] = this.EMPTY;
       }
     }
     return [];
@@ -159,7 +166,7 @@ export class TicTacToeService {
   showX(posX: number, posY: number): boolean {
     return this.board[posX][posY] === this.X;
   }
-  
+
   showO(posX: number, posY: number): boolean {
     return this.board[posX][posY] === this.O;
   }

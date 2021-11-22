@@ -51,4 +51,11 @@ export class TicTacToeComponent implements OnInit {
     return this.ticTacToeService.showVictory(posX, posY);
   }
 
+  get player(): number {
+    return this.ticTacToeService.player;
+  }
+
+  newGame(): void {
+    this.ticTacToeService.newGame();
+  }
 }
